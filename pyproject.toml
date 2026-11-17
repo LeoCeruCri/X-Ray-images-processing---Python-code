@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xrayfb"
+version = "0.1.0"
+description = "Processing of X-ray radiographs of fluidized beds (TU Delft 3-source/detector set-up)"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Leonel Mario Cerutti Cristaldo" }]
+# 3.14: newest Python for which every dependency (including ASTRA, needed for the
+# later 3D phase) publishes Windows wheels. Re-check before moving to 3.15.
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "numpy>=2.3",
+    "scipy>=1.16",
+    "tifffile>=2025.1",
+    "scikit-image>=0.26",
+    "pyyaml>=6.0",
+    "matplotlib>=3.10",
+    "tqdm>=4.67",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "jupyter", "ipympl", "nbstripout", "pre-commit", "ruff"]
+# Phase 2 (3D reconstruction). fluidized-bed-ct and CaTE (GPL-3.0) are installed
+# separately as external dependencies; their code is not copied into this repo.
+tomo = ["astra-toolbox>=2.5", "transforms3d"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

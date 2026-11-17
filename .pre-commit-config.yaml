@@ -1,0 +1,6 @@
+# Strips notebook outputs before each commit (run `pre-commit install` once).
+repos:
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.8.1
+    hooks:
+      - id: nbstripout

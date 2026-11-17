@@ -1,0 +1,23 @@
+# Template for one measurement. Copy it (e.g. configs/local/<run>.yaml, which git
+# ignores) and fill in your paths. Every processing parameter belongs here.
+
+# Root of the raw data. Nothing is ever written below this folder.
+raw_root: 'D:\XRay\raw'
+# Where processed results and figures go (must be outside raw_root).
+output_root: 'D:\XRay\processed'
+
+# Cameras (source-detector pairs) to process, numbered as in the "camera N" folders.
+cameras: [1, 2, 3]
+
+# Folders relative to raw_root. Dark, empty and packed must use the same frame rate
+# and detector region (VROI) as the measurement.
+folders:
+  measurement: 'small_bed/8-90-REG_U1'
+  dark: 'small_bed/Dark'
+  empty: 'small_bed/Empty'
+  packed: 'small_bed/Packed'
+
+# Frames of the measurement to process (stop is exclusive).
+frames: {start: 0, stop: 200, step: 1}
+# Frames averaged for the dark, empty and packed references.
+reference_frames: {start: 20, stop: 120, step: 1}

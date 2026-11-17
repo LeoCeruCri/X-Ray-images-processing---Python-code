@@ -221,3 +221,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- Project-specific -------------------------------------------------------
+# Experimental data never goes into git (raw data stay on the lab/laptop disks).
+*.tif
+*.tiff
+data/
+processed/
+figures/
+# Personal run configurations with local paths
+configs/local/
